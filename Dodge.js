@@ -107,59 +107,59 @@
 
 // level 2
     function level2(){
-        for (let i = 40; i < 50; i++) {
+        for (let i = 40; i < 55; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'blue');
         }
     }
     function level2Part2(){
-        for (let i = 50; i < 65; i++) {
+        for (let i = 55; i < 70; i++) {
             squares[i] = new square(squareThickness + 20, squareHeight, 'blue');
         }
     }
 
 //level 3
     function level3(){
-        for (let i = 65; i < 75; i++) {
+        for (let i = 70; i < 80; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'purple');
         }
     }
     function level3Part2(){
-        for (let i = 75; i < 80; i++) {
+        for (let i = 80; i < 85; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'purple');
         }
     }
 
 // level 4
     function level4(){
-        for (let i = 80; i < 90; i++) {
+        for (let i = 85; i < 95; i++) {
             squares[i] = new square(squareThickness, squareHeight + 20, 'orange');
         }
     }
     function level4Part2(){
-        for (let i = 90; i < 100; i++) {
+        for (let i = 95; i < 105; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'orange');
         }
     }
 // level 5
     function level5(){
-        for (let i = 100; i < 110; i++) {
+        for (let i = 105; i < 115; i++) {
             squares[i] = new square(squareThickness + 20, squareHeight, 'red');
         }
     }
     function level5Part2(){
-        for (let i = 110; i < 120; i++) {
+        for (let i = 115; i < 125; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'red');
         }
     }
 
 // level 6
     function level6(){
-        for (let i = 120; i < 130; i++) {
+        for (let i = 125; i < 130; i++) {
             squares[i] = new square(squareThickness + 20, squareHeight, '#88d8c0');
         }
     }
     function level6Part2(){
-        for (let i = 130; i < 145; i++) {
+        for (let i = 130; i < 150; i++) {
             squares[i] = new square(squareThickness, squareHeight, '#88d8c0');
         }
     }
@@ -296,7 +296,7 @@
                 }
 
             if(showingStartScreen) {
-                canvasContext.fillStyle = 'red'
+                canvasContext.fillStyle = '#88d8c0'
                 canvasContext.font = "bold 55px Helvetica, Arial, sans-serif";
                 canvasContext.fillText("Created by Michael Cuebas", 40, 200);
                 canvasContext.fillText("Click to Begin", 200, 350);
@@ -310,7 +310,7 @@
 
         function draw(){
             colorRect2(0, 0, canvas2.width, canvas2.height, 'black');
-            canvasContext2.fillStyle = "red";
+            canvasContext2.fillStyle = "green";
             canvasContext2.font = "bold 50px Helvetica, Arial, sans-serif";
             canvasContext2.fillText("Score ", 80, 50, );
             canvasContext2.fillStyle = "#88d8c0";
