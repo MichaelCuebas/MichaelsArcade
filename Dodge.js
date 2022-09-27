@@ -107,59 +107,59 @@
 
 // level 2
     function level2(){
-        for (let i = 40; i < 48; i++) {
+        for (let i = 40; i < 50; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'blue');
         }
     }
     function level2Part2(){
-        for (let i = 48; i < 53; i++) {
+        for (let i = 50; i < 65; i++) {
             squares[i] = new square(squareThickness + 20, squareHeight, 'blue');
         }
     }
 
 //level 3
     function level3(){
-        for (let i = 53; i < 57; i++) {
+        for (let i = 65; i < 75; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'purple');
         }
     }
     function level3Part2(){
-        for (let i = 57; i < 67; i++) {
+        for (let i = 75; i < 80; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'purple');
         }
     }
 
 // level 4
     function level4(){
-        for (let i = 67; i < 70; i++) {
+        for (let i = 80; i < 90; i++) {
             squares[i] = new square(squareThickness, squareHeight + 20, 'orange');
         }
     }
     function level4Part2(){
-        for (let i = 70; i < 75; i++) {
+        for (let i = 90; i < 100; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'orange');
         }
     }
 // level 5
     function level5(){
-        for (let i = 75; i < 79; i++) {
+        for (let i = 100; i < 110; i++) {
             squares[i] = new square(squareThickness + 20, squareHeight, 'red');
         }
     }
     function level5Part2(){
-        for (let i = 79; i < 85; i++) {
+        for (let i = 110; i < 120; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'red');
         }
     }
 
 // level 6
     function level6(){
-        for (let i = 85; i < 95; i++) {
+        for (let i = 120; i < 130; i++) {
             squares[i] = new square(squareThickness + 20, squareHeight, '#88d8c0');
         }
     }
     function level6Part2(){
-        for (let i = 95; i < 105; i++) {
+        for (let i = 130; i < 145; i++) {
             squares[i] = new square(squareThickness, squareHeight, '#88d8c0');
         }
     }
