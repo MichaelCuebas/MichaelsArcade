@@ -10,8 +10,8 @@
 .navbar {
     width: 100%;
     background-color: black;
-    position: static;
-    top: 0;
+    position: relative;
+    top: -16px;
 }
 
 ul {

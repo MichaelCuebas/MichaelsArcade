@@ -112,54 +112,54 @@
         }
     }
     function level2Part2(){
-        for (let i = 55; i < 70; i++) {
+        for (let i = 55; i < 60; i++) {
             squares[i] = new square(squareThickness + 20, squareHeight, 'blue');
         }
     }
 
 //level 3
     function level3(){
-        for (let i = 70; i < 80; i++) {
+        for (let i = 60; i < 70; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'purple');
         }
     }
     function level3Part2(){
-        for (let i = 80; i < 85; i++) {
+        for (let i = 70; i < 80; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'purple');
         }
     }
 
 // level 4
     function level4(){
-        for (let i = 85; i < 95; i++) {
+        for (let i = 80; i < 90; i++) {
             squares[i] = new square(squareThickness, squareHeight + 20, 'orange');
         }
     }
     function level4Part2(){
-        for (let i = 95; i < 105; i++) {
+        for (let i = 90; i < 100; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'orange');
         }
     }
 // level 5
     function level5(){
-        for (let i = 105; i < 115; i++) {
+        for (let i = 100; i < 110; i++) {
             squares[i] = new square(squareThickness + 20, squareHeight, 'red');
         }
     }
     function level5Part2(){
-        for (let i = 115; i < 125; i++) {
+        for (let i = 110; i < 115; i++) {
             squares[i] = new square(squareThickness, squareHeight, 'red');
         }
     }
 
 // level 6
     function level6(){
-        for (let i = 125; i < 130; i++) {
+        for (let i = 115; i < 125; i++) {
             squares[i] = new square(squareThickness + 20, squareHeight, '#88d8c0');
         }
     }
     function level6Part2(){
-        for (let i = 130; i < 150; i++) {
+        for (let i = 125; i < 140; i++) {
             squares[i] = new square(squareThickness, squareHeight, '#88d8c0');
         }
     }
