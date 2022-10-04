@@ -46,8 +46,8 @@
     function collisionDetection(i) {
         if (squareX + (squareThickness - 1) >= squares[i].xPos &&
             squareX <= squares[i].xPos + (squares[i].width - 1) &&
-            squareY + squareHeight >= (squares[i].yPosStart + 1) &&
-            (squareY + 1) <= squares[i].yPosStart + squares[i].height) {
+            squareY + squareHeight >= (squares[i].yPos + 1) &&
+            (squareY + 1) <= squares[i].yPos + squares[i].height) {
             return showingEndScreen = true;
         }
     }
@@ -59,7 +59,7 @@
             squares.length = 0;
             showingEndScreen = false;
         }
-    };
+    }
 
     function handleMouseClickStart (){
         if (showingStartScreen) {
@@ -68,28 +68,28 @@
             squares.length = 0;
             showingStartScreen = false;
         }
-    };
+    }
 
 
     class square {
         constructor(width, height, color) {
             this.xPos = arrayRandom[Math.floor(Math.random() * arrayRandom.length)];
-            this.yPosStart = -400;
+            this.yPos = -400;
             this.width = width;
             this.height = height;
             this.color = color;
-            this.speed = (Math.random() * 1) + .2;
+            this.speed = (Math.random()) + .2;
         }
 
         move() {
-            this.yPosStart = this.yPosStart + this.speed;
-            if(this.yPosStart > canvas.height) {
-                this.yPosStart = -20;
+            this.yPos = this.yPos + this.speed;
+            if(this.yPos > canvas.height) {
+                this.yPos = -20;
             }
         }
             show()
             {
-                colorRect(this.xPos, this.yPosStart, this.width, this.height, this.color);
+                colorRect(this.xPos, this.yPos, this.width, this.height, this.color);
             }
     }
 
@@ -215,7 +215,7 @@
                     level5Part2();
                     break;
                 case 90:
-                    score += 18;
+                    score += 25;
                     level6();
                     break;
                 case 105:
@@ -232,7 +232,6 @@
                 switch (event.key) {
                     case 'w':
                         if (squareY < 10) {
-                            squareY = squareY;
                             break;
                         } else {
                             squareY = squareY - 20;
@@ -240,7 +239,6 @@
                         }
                     case 'a':
                         if (squareX < 10) {
-                            squareX = squareX;
                             break;
                         } else {
                             squareX = squareX - 20;
@@ -248,7 +246,6 @@
                         }
                     case 's':
                         if (squareY > 570) {
-                            squareY = squareY;
                             break;
                         } else {
                             squareY = squareY + 20;
@@ -256,7 +253,6 @@
                         }
                     case 'd':
                         if (squareX > 770) {
-                            squareX = squareX;
                             break;
                         } else {
                             squareX = squareX + 20;
