@@ -4,13 +4,68 @@ let squareWidth = 40;
 let squareX = 0;
 let squareY = 0;
 let icebergs = [];
-let boatSpeed = 10;
+let boatSpeed = 20;
 let level = 1;
 let collisionTop = false;
 let collisionBottom = false;
 let collisionLeft = false;
 let collisionRight = false;
 let objectMove = false;
+let goal1;
+let button1;
+let newLevel = false;
+
+class iceberg {
+    constructor(xPos, yPos, width, height, color) {
+        this.xPos = xPos;
+        this.yPos = yPos;
+        this.width = width;
+        this.height = height;
+        this.color = color;
+    }
+    show(){
+        colorRect(this.xPos, this.yPos, this.width, this.height, this.color);
+    }
+}
+
+class button {
+    constructor(xPos, yPos, width, height, color) {
+        this.xPos = xPos;
+        this.yPos = yPos;
+        this.width = width;
+        this.height = height;
+        this.color = color;
+    }
+    show(){
+        colorRect(this.xPos, this.yPos, this.width, this.height, this.color);
+    }
+    activate(){
+
+    }
+}
+
+class goal {
+    constructor(xPos, yPos, width, height, color) {
+        this.xPos = xPos;
+        this.yPos = yPos;
+        this.width = width;
+        this.height = height;
+        this.color = color;
+    }
+    show(){
+        colorRect(this.xPos, this.yPos, this.width, this.height, this.color);
+    }
+
+    levelCleared(){
+            newLevel = true;
+            level = level + 1;
+            icebergs.length = 0;
+            collisionRight = false;
+            collisionLeft = false;
+            collisionBottom = false;
+            collisionTop = false;
+    }
+}
 
 function loadLevels(){
     // level 1
@@ -33,13 +88,42 @@ function loadLevels(){
         icebergs[7].show();
         icebergs[8] = new iceberg(760, 240, 40, 40, 'white')
         icebergs[8].show();
+        goal1 = new goal(760, 280, 40, 40, 'pink')
+        goal1.show();
     }
     // level 2
     else if(level === 2){
-        icebergs[0] = new iceberg(760, 0, 40, 40, 'white')
-        icebergs[0].show();
-        icebergs[1] = new iceberg(120, 560, 40, 40, 'white')
-        icebergs[1].show();
+        if(newLevel === true){
+            squareX = 0;
+            squareY = 300;
+            newLevel = false;
+        }
+        else {
+            icebergs[0] = new iceberg(120, 560, 40, 40, 'white')
+            icebergs[0].show();
+            icebergs[1] = new iceberg(40, 300, 40, 40, 'white')
+            icebergs[1].show();
+            icebergs[2] = new iceberg(0, 340, 40, 40, 'white')
+            icebergs[2].show();
+            icebergs[3] = new iceberg(200, 0, 40, 40, 'white')
+            icebergs[3].show();
+            icebergs[4] = new iceberg(160, 380, 40, 40, 'white')
+            icebergs[4].show();
+            icebergs[5] = new iceberg(200, 520, 40, 40, 'white')
+            icebergs[5].show();
+            icebergs[6] = new iceberg(240, 420, 40, 40, 'white')
+            icebergs[6].show();
+            icebergs[7] = new iceberg(360, 340, 40, 40, 'white')
+            icebergs[7].show();
+            icebergs[8] = new iceberg(240, 560, 40, 40, 'white')
+            icebergs[8].show();
+            button1 = new button(200, 40, 40, 40, 'yellow')
+            button1.show();
+
+
+            goal1 = new goal(760, 400, 40, 40, 'pink')
+            goal1.show();
+        }
 
     }
 }
@@ -49,17 +133,17 @@ function moveD(){
     }
     else {
         let refreshInternal = setInterval(function () {
-            if (squareX === 760 || collisionRight === true) {
+            if (squareX === 760 || collisionRight === true || newLevel === true) {
                 clearInterval(refreshInternal)
                 objectMove = false;
             } else {
-                squareX = squareX + boatSpeed;
-                collisionLeft = false;
-                collisionTop = false;
-                collisionBottom = false;
-                objectMove = true;
-            }
-        }, 1)
+                    squareX = squareX + boatSpeed;
+                    collisionLeft = false;
+                    collisionTop = false;
+                    collisionBottom = false;
+                    objectMove = true;
+                }
+        }, 6)
     }
 }
 
@@ -78,7 +162,7 @@ function moveS(){
                 collisionTop = false;
                 objectMove = true;
             }
-        },1)
+        },6)
 
     }
 }
@@ -97,7 +181,7 @@ function moveA(){
                 collisionTop = false;
                 objectMove = true;
             }
-        }, 1)
+        }, 6)
     }
 }
 
@@ -115,7 +199,7 @@ function moveW(){
                 collisionLeft = false;
                 objectMove = true;
             }
-        }, 1)
+        }, 6)
     }
 }
 
@@ -142,19 +226,6 @@ function collisionDetection(i) {
 }
 
 
-class iceberg {
-    constructor(xPos, yPos, width, height, color) {
-        this.xPos = xPos;
-        this.yPos = yPos;
-        this.width = width;
-        this.height = height;
-        this.color = color;
-    }
-    show(){
-        colorRect(this.xPos, this.yPos, this.width, this.height, this.color);
-    }
-}
-
 window.onload = function(){
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
@@ -163,6 +234,7 @@ window.onload = function(){
         moveEverything();
         drawEverything();
 
+
     }, 1 / framesPerSecond)
 }
 
@@ -170,8 +242,10 @@ function drawEverything(){
 
     colorRect(0, 0, canvas.width, canvas.height, '#49e8ff');
     colorRect(squareX, squareY, squareWidth, squareHeight, '#000080');
-
     loadLevels();
+    if(squareX === goal1.xPos && squareY === goal1.yPos){
+        goal1.levelCleared();
+    }
 }
 
 function moveEverything() {
@@ -208,4 +282,5 @@ function moveEverything() {
         canvasContext.fillStyle = drawColor;
         canvasContext.fillRect(leftX, topY, width, height);
     }
+
 
