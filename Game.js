@@ -1,4 +1,4 @@
-let framesPerSecond = 60;
+let framesPerSecond = 35;
 let squareHeight = 40;
 let squareWidth = 40;
 let squareX = 0;
@@ -13,7 +13,11 @@ let collisionRight = false;
 let objectMove = false;
 let goal1;
 let button1;
+let button2;
+let buttonAct1 = false;
+let buttonAct2 = false;
 let newLevel = false;
+
 
 class iceberg {
     constructor(xPos, yPos, width, height, color) {
@@ -39,8 +43,14 @@ class button {
     show(){
         colorRect(this.xPos, this.yPos, this.width, this.height, this.color);
     }
-    activate(){
-
+    activate1(){
+        icebergs.splice(22, 1);
+        icebergs.splice(23, 1);
+        buttonAct1 = true;
+    }
+    activate2(){
+        icebergs.splice(24, 1);
+        buttonAct2 = true;
     }
 }
 
@@ -57,6 +67,7 @@ class goal {
     }
 
     levelCleared(){
+            boatSpeed = 0;
             newLevel = true;
             level = level + 1;
             icebergs.length = 0;
@@ -95,36 +106,92 @@ function loadLevels(){
     else if(level === 2){
         if(newLevel === true){
             squareX = 0;
-            squareY = 300;
+            squareY = 400;
             newLevel = false;
         }
         else {
-            icebergs[0] = new iceberg(120, 560, 40, 40, 'white')
+            icebergs[0] = new iceberg(320, 0, 40, 40, 'white')
             icebergs[0].show();
-            icebergs[1] = new iceberg(40, 300, 40, 40, 'white')
+            icebergs[1] = new iceberg(560, 0, 40, 40, 'white')
             icebergs[1].show();
-            icebergs[2] = new iceberg(0, 340, 40, 40, 'white')
+            icebergs[2] = new iceberg(320, 160, 40, 40, 'white')
             icebergs[2].show();
-            icebergs[3] = new iceberg(200, 0, 40, 40, 'white')
+            icebergs[3] = new iceberg(520, 200, 40, 40, 'white')
             icebergs[3].show();
-            icebergs[4] = new iceberg(160, 380, 40, 40, 'white')
+            icebergs[4] = new iceberg(720, 280, 40, 40, 'white')
             icebergs[4].show();
-            icebergs[5] = new iceberg(200, 520, 40, 40, 'white')
+            icebergs[5] = new iceberg(40, 400, 40, 40, 'white')
             icebergs[5].show();
-            icebergs[6] = new iceberg(240, 420, 40, 40, 'white')
+            icebergs[6] = new iceberg(440, 400, 40, 40, 'white')
             icebergs[6].show();
-            icebergs[7] = new iceberg(360, 340, 40, 40, 'white')
+            icebergs[7] = new iceberg(0, 440, 40, 40, 'white')
             icebergs[7].show();
-            icebergs[8] = new iceberg(240, 560, 40, 40, 'white')
+            icebergs[8] = new iceberg(280, 440, 40, 40, 'white')
             icebergs[8].show();
-            button1 = new button(200, 40, 40, 40, 'yellow')
+            icebergs[9] = new iceberg(400, 440, 40, 40, 'white')
+            icebergs[9].show();
+            icebergs[10] = new iceberg(120, 480, 40, 40, 'white')
+            icebergs[10].show();
+            icebergs[11] = new iceberg(280, 480, 40, 40, 'white')
+            icebergs[11].show();
+            icebergs[12] = new iceberg(120, 520, 40, 40, 'white')
+            icebergs[12].show();
+            icebergs[13] = new iceberg(640, 520, 40, 40, 'white')
+            icebergs[13].show();
+            icebergs[14] = new iceberg(120, 560, 40, 40, 'white')
+            icebergs[14].show();
+            icebergs[15] = new iceberg(160, 560, 40, 40, 'white')
+            icebergs[15].show();
+            icebergs[16] = new iceberg(400, 560, 40, 40, 'white')
+            icebergs[16].show();
+            icebergs[17] = new iceberg(600, 560, 40, 40, 'white')
+            icebergs[17].show();
+            icebergs[18] = new iceberg(760, 480, 40, 40, 'white')
+            icebergs[18].show();
+            icebergs[19] = new iceberg(720, 440, 40, 40, 'white')
+            icebergs[19].show();
+            icebergs[20] = new iceberg(40, 440, 40, 40, 'white')
+            icebergs[20].show();
+            icebergs[21] = new iceberg(440, 440, 40, 40, 'white')
+            icebergs[21].show();
+
+
+            button1 = new button(0, 560, 40, 40, 'yellow')
             button1.show();
 
+            button2 = new button(360, 560, 40, 40, 'yellow')
+            button2.show();
 
-            goal1 = new goal(760, 400, 40, 40, 'pink')
+            goal1 = new goal(760, 440, 40, 40, 'pink')
             goal1.show();
-        }
 
+            //Disappearing Icebergs
+
+            if (buttonAct1 === false) {
+                icebergs[22] = new iceberg(320, 400, 40, 40, 'white')
+                icebergs[22].show();
+                icebergs[23] = new iceberg(760, 360, 40, 40, 'white')
+                icebergs[23].show();
+
+            }
+            if (buttonAct2 === false) {
+                icebergs[24] = new iceberg(760, 400, 40, 40, 'white')
+                icebergs[24].show();
+            } else if (buttonAct2 === true) {
+                icebergs[22] = new iceberg(360, 440, 40, 40, 'white')
+                icebergs[22].show();
+                icebergs[23] = new iceberg(400, 480, 40, 40, 'white')
+                icebergs[23].show();
+                icebergs[24] = new iceberg(400, 520, 40, 40, 'white')
+                icebergs[24].show();
+                icebergs[25] = new iceberg(320, 440, 40, 40, 'white')
+                icebergs[25].show();
+            }
+        }
+        let refreshInternal2 = setInterval(function () {
+                boatSpeed = 20;
+                clearInterval(refreshInternal2)
+        }, 200)
     }
 }
 
@@ -243,8 +310,15 @@ function drawEverything(){
     colorRect(0, 0, canvas.width, canvas.height, '#49e8ff');
     colorRect(squareX, squareY, squareWidth, squareHeight, '#000080');
     loadLevels();
+
     if(squareX === goal1.xPos && squareY === goal1.yPos){
         goal1.levelCleared();
+    }
+    if(squareX === button1.xPos && squareY === button1.yPos && buttonAct1 === false){
+        button1.activate1();
+    }
+    if (squareX === button2.xPos && squareY === button2.yPos && buttonAct2 === false){
+        button2.activate2();
     }
 }
 
