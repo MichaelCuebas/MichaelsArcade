@@ -43,15 +43,14 @@ class button {
     show(){
         colorRect(this.xPos, this.yPos, this.width, this.height, this.color);
     }
-    activate1(){
-        icebergs.splice(22, 1);
-        icebergs.splice(23, 1);
-        buttonAct1 = true;
-    }
-    activate2(){
-        icebergs.splice(24, 1);
-        buttonAct2 = true;
-    }
+        activate1()
+        {
+            buttonAct1 = true;
+        }
+        activate2()
+        {
+            buttonAct2 = true;
+        }
 }
 
 class goal {
@@ -155,7 +154,6 @@ function loadLevels(){
             icebergs[21] = new iceberg(440, 440, 40, 40, 'white')
             icebergs[21].show();
 
-
             button1 = new button(0, 560, 40, 40, 'yellow')
             button1.show();
 
@@ -172,12 +170,16 @@ function loadLevels(){
                 icebergs[22].show();
                 icebergs[23] = new iceberg(760, 360, 40, 40, 'white')
                 icebergs[23].show();
-
+            }
+            else if(buttonAct1 === true){
+                icebergs.splice(22, 1);
+                icebergs.splice(23, 1);
             }
             if (buttonAct2 === false) {
-                icebergs[24] = new iceberg(760, 400, 40, 40, 'white')
-                icebergs[24].show();
-            } else if (buttonAct2 === true) {
+                icebergs[22] = new iceberg(760, 400, 40, 40, 'white')
+                icebergs[22].show();
+            }
+            else if (buttonAct2 === true) {
                 icebergs[22] = new iceberg(360, 440, 40, 40, 'white')
                 icebergs[22].show();
                 icebergs[23] = new iceberg(400, 480, 40, 40, 'white')
