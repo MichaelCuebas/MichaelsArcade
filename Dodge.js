@@ -23,6 +23,7 @@
     function incrementSeconds() {
         seconds += 1;
     }
+    
     function incrementScore() {
         if(showingEndScreen){
             return score;
