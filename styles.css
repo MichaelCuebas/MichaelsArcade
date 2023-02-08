@@ -28,7 +28,7 @@ a {
 }
 
 a:hover{
-    color: red;
+    color: mediumaquamarine;
 }
 a#Tab2:hover{
     color: #d600ff;
@@ -37,7 +37,7 @@ a#Tab3:hover{
     color: green;
 }
 a#Tab4:hover{
-    color: aqua;
+    color: orangered;
 }
 a#Tab5:hover{
     color: yellowgreen;
