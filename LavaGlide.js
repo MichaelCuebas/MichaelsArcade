@@ -133,8 +133,26 @@ function loadLevels(){
             icebergs[i] = new iceberg(RockXPos[i], RockYPos[i], 40, 40, '#000000')
             icebergs[i].show();
         }
+
+        button1 = new button(360, 280, 40, 40, '#5C2D91')
+        button1.show();
+
         goal1 = new goal(760, 280, 40, 40, '#f2f217')
         goal1.show();
+
+        if (buttonAct1 === false) {
+            vanish[0] = new iceberg(320,280,40,40,'#000000');
+            vanish[0].show();
+            vanish[1] = new iceberg(400,280,40,40,'#000000');
+            vanish[1].show();
+        }
+        else if(buttonAct1 === true){
+            vanish.splice(0,2);
+            vanish[0] = new iceberg(360,320,40,40,'#000000');
+            vanish[0].show();
+            vanish[1] = new iceberg(360,240,40,40,'#000000');
+            vanish[1].show();
+        }
     }
 
     // Start of level 2
@@ -146,6 +164,8 @@ function loadLevels(){
             squareX = 0;
             squareY = 360;
             newLevel = false;
+            buttonAct1 = false;
+            vanish.splice(0,vanish.length);
         }
         else {
             let RockXPos2 = [
