@@ -1,8 +1,9 @@
 //Ice Glider
 //To Do:
-//Create Vector for XPos
-//Create second Vector for YPos
-//Create CSV file for level info
+//Create Vector for XPos for level 1
+
+//Create second Vector for YPos for level 1
+//Create CSV file for level info (Might not need or need for each level)
 //Create for loop to create blocks in specific locations
 let framesPerSecond = 35;
 let squareHeight = 40;
@@ -10,8 +11,9 @@ let squareWidth = 40;
 let squareX = 0;
 let squareY = 0;
 let icebergs = [];
+let vanish = [];
 let boatSpeed = 20;
-let level = 1;
+let level = 1; //Change to lv. 1
 let collisionTop = false;
 let collisionBottom = false;
 let collisionLeft = false;
@@ -19,9 +21,7 @@ let collisionRight = false;
 let objectMove = false;
 let goal1;
 let button1;
-let button2;
 let buttonAct1 = false;
-let buttonAct2 = false;
 let newLevel = false;
 
 
@@ -53,10 +53,6 @@ class button {
         {
             buttonAct1 = true;
         }
-        activate2()
-        {
-            buttonAct2 = true;
-        }
 }
 
 class goal {
@@ -83,126 +79,142 @@ class goal {
     }
 }
 
+
 function loadLevels(){
-    // level 1
+
+    // Start of level 1
+    //*******************************************************
+    //*******************************************************
+
     if(level === 1){
-        icebergs[0] = new iceberg(400, 0, 40, 40, '#000000')
-        icebergs[0].show();
-        icebergs[1] = new iceberg(400, 560, 40, 40, '#000000')
-        icebergs[1].show();
-        icebergs[2] = new iceberg(0, 40, 40, 40, '#000000')
-        icebergs[2].show();
-        icebergs[3] = new iceberg(0, 80, 40, 40, '#000000')
-        icebergs[3].show();
-        icebergs[4] = new iceberg(0, 120, 40, 40, '#000000')
-        icebergs[4].show();
-        icebergs[5] = new iceberg(0, 160, 40, 40, '#000000')
-        icebergs[5].show();
-        icebergs[6] = new iceberg(0, 200, 40, 40, '#000000')
-        icebergs[6].show();
-        icebergs[7] = new iceberg(0, 240, 40, 40, '#000000')
-        icebergs[7].show();
-        icebergs[8] = new iceberg(760, 240, 40, 40, '#000000')
-        icebergs[8].show();
-        icebergs[9] = new iceberg(400, 40, 40, 40, '#000000')
-        icebergs[9].show();
-        icebergs[10] = new iceberg(400, 80, 40, 40, '#000000')
-        icebergs[10].show();
-        icebergs[11] = new iceberg(400, 120, 40, 40, '#000000')
-        icebergs[11].show();
-        icebergs[12] = new iceberg(400, 160, 40, 40, '#000000')
-        icebergs[12].show();
+        let RockXPos = [
+            0,0,0,0,0,0,
+            40,40,40,40,40,40,40,40,
+            80,80,80,80,
+            120,120,120,120,
+            160,160,160,160,
+            200,200,200,200,
+            240,240,240,240,
+            280,280,280,280,
+            320,320,320,320,320,320,320,320,320,320,320,320,
+            400,400,400,400,400,400,400,400,400,400,400,400,400,400,400,
+            440,440,440,440,
+            480,480,480,480,
+            520,520,520,520,
+            560,560,560,560,
+            600,600,600,600,
+            640,640,640,640,
+            680,680,680,680,
+            720,720,720,720,
+            760,760,760,760,760,760,760,760,760,760,760,760,760,760,
+        ];
+        let RockYPos = [
+            40,80,120,160,200,240,
+            40,240,320,360,400,440,480,520,
+            40,240,320,520,
+            40,240,320,520,
+            40,240,320,520,
+            40,240,320,520,
+            40,240,320,520,
+            40,240,320,520,
+            40,80,120,160,200,240,320,360,400,440,480,520,
+            0,40,80,120,160,200,240,320,360,400,440,480,520,560,600,
+            240,320,0,560,
+            240,320,0,560,
+            240,320,0,560,
+            240,320,0,560,
+            240,320,0,560,
+            240,320,0,560,
+            240,320,0,560,
+            240,320,0,560,
+            0,40,80,120,160,200,240,320,360,400,440,480,520,560,
+        ];
+        for(let i = 0; i < RockYPos.length + 1; i++){
+            icebergs[i] = new iceberg(RockXPos[i], RockYPos[i], 40, 40, '#000000')
+            icebergs[i].show();
+        }
         goal1 = new goal(760, 280, 40, 40, '#f2f217')
         goal1.show();
     }
-    // level 2
-    else if(level === 2){
+
+    // Start of level 2
+    //*********************************************************
+    //*********************************************************
+
+    if(level === 2){
         if(newLevel === true){
             squareX = 0;
-            squareY = 400;
+            squareY = 360;
             newLevel = false;
         }
         else {
-            icebergs[0] = new iceberg(320, 0, 40, 40, '#000000')
-            icebergs[0].show();
-            icebergs[1] = new iceberg(560, 0, 40, 40, '#000000')
-            icebergs[1].show();
-            icebergs[2] = new iceberg(320, 160, 40, 40, '#000000')
-            icebergs[2].show();
-            icebergs[3] = new iceberg(520, 200, 40, 40, '#000000')
-            icebergs[3].show();
-            icebergs[4] = new iceberg(720, 280, 40, 40, '#000000')
-            icebergs[4].show();
-            icebergs[5] = new iceberg(40, 400, 40, 40, '#000000')
-            icebergs[5].show();
-            icebergs[6] = new iceberg(440, 400, 40, 40, '#000000')
-            icebergs[6].show();
-            icebergs[7] = new iceberg(0, 440, 40, 40, '#000000')
-            icebergs[7].show();
-            icebergs[8] = new iceberg(280, 440, 40, 40, '#000000')
-            icebergs[8].show();
-            icebergs[9] = new iceberg(400, 440, 40, 40, '#000000')
-            icebergs[9].show();
-            icebergs[10] = new iceberg(120, 480, 40, 40, '#000000')
-            icebergs[10].show();
-            icebergs[11] = new iceberg(280, 480, 40, 40, '#000000')
-            icebergs[11].show();
-            icebergs[12] = new iceberg(120, 520, 40, 40, '#000000')
-            icebergs[12].show();
-            icebergs[13] = new iceberg(640, 520, 40, 40, '#000000')
-            icebergs[13].show();
-            icebergs[14] = new iceberg(120, 560, 40, 40, '#000000')
-            icebergs[14].show();
-            icebergs[15] = new iceberg(160, 560, 40, 40, '#000000')
-            icebergs[15].show();
-            icebergs[16] = new iceberg(400, 560, 40, 40, '#000000')
-            icebergs[16].show();
-            icebergs[17] = new iceberg(600, 560, 40, 40, '#000000')
-            icebergs[17].show();
-            icebergs[18] = new iceberg(760, 480, 40, 40, '#000000')
-            icebergs[18].show();
-            icebergs[19] = new iceberg(720, 440, 40, 40, '#000000')
-            icebergs[19].show();
-            icebergs[20] = new iceberg(40, 440, 40, 40, '#000000')
-            icebergs[20].show();
-            icebergs[21] = new iceberg(440, 440, 40, 40, '#000000')
-            icebergs[21].show();
+            let RockXPos2 = [
+                0,
+                40,40,40,40,40,40,40,40,40,40,40,40,40,
+                80,80,80,80,80,80,
+                120,120,120,120,120,120,120,120,120,120,120,120,120,
+                160,160,160,160,160,160,160,160,160,160,
+                200,200,200,200,200,200,200,200,200,
+                240,240,240,240,240,
+                280,280,280,280,280,280,280,280,280,280,280,280,
+                320,320,320,320,
+                360,360,360,360,360,360,360,360,360,360,360,360,360,
+                400,400,400,400,400,
+                440,440,440,440,440,440,440,440,440,440,440,440,
+                480,480,480,
+                520,520,520,520,520,520,520,520,520,520,520,520,520,
+                560,560,560,560,560,560,560,560,
+                600,600,600,600,600,600,600,600,600,600,600,600,
+                640,640,640,640,640,640,640,640,640,640,640,640,
+                680,680,680,680,680,
+                720,720,720,720,720,720,720,720,720,720,720,720,720,720,
+                760,760,760,
+            ];
+            let RockYPos2 = [
+                400,
+                40,80,120,160,200,240,280,320,360,400,440,520,600,
+                40,80,120,160,520,600,
+                40,80,120,160,240,280,320,360,400,440,480,520,600,
+                40,240,280,320,360,400,440,480,520,600,
+                40,120,160,200,240,280,480,520,600,
+                40,400,480,520,600,
+                40,80,120,160,200,240,280,320,400,480,520,600,
+                400,480,520,600,
+                0, 40,80,120,160,200,240,280,320,400,480,520,600,
+                0,400,480,520,600,
+                0,80,120,160,200,240,280,320,360,400,480,520,
+                0,200,400,
+                0,40,80,120,200,280,320,400,440,480,520,560,600,
+                0,80,120,200,280,320,560,600,
+                0,80,120,200,280,320,360,400,440,480,560,600,
+                0,80,120,200,280,320,360,400,440,480,560,600,
+                0,200,480,560,600,
+                0,80,120,160,200,240,280,320,360,400,440,480,560,600,
+                0,560,600,
+            ];
+            for(let i = 0; i < RockYPos2.length + 1; i++) {
+                icebergs[i] = new iceberg(RockXPos2[i], RockYPos2[i], 40, 40, '#000000')
+                icebergs[i].show();
+            }
 
-            button1 = new button(0, 560, 40, 40, '#5C2D91')
+            button1 = new button(0, 440, 40, 40, '#5C2D91')
             button1.show();
 
-            button2 = new button(360, 560, 40, 40, '#00ACFC')
-            button2.show();
-
-            goal1 = new goal(760, 440, 40, 40, '#f2f217')
+            goal1 = new goal(680, 440, 40, 40, '#f2f217')
             goal1.show();
 
             //Disappearing Icebergs
 
             if (buttonAct1 === false) {
-                icebergs[22] = new iceberg(320, 400, 40, 40, '#000000')
-                icebergs[22].show();
-                icebergs[23] = new iceberg(760, 360, 40, 40, '#000000')
-                icebergs[23].show();
+                vanish[0] = new iceberg(200,400,40,40,'#000000');
+                vanish[0].show();
+                vanish[1] = new iceberg(360,360,40,40,'#000000');
+                vanish[1].show();
+                vanish[2] = new iceberg(760,80,40,40,'#000000');
+                vanish[2].show();
             }
             else if(buttonAct1 === true){
-                    icebergs.splice(22, 1);
-                    icebergs.splice(23, 1);
-            }
-            if (buttonAct2 === false) {
-                // Bug here 22 -> 24, Add for loop to set 24 = 22, splice 24, then start buttonAct2 at index 23
-                icebergs[22] = new iceberg(760, 400, 40, 40, '#000000')
-                icebergs[22].show();
-            }
-            else if (buttonAct2 === true) {
-                icebergs[22] = new iceberg(360, 440, 40, 40, '#000000')
-                icebergs[22].show();
-                icebergs[23] = new iceberg(400, 480, 40, 40, '#000000')
-                icebergs[23].show();
-                icebergs[24] = new iceberg(400, 520, 40, 40, '#000000')
-                icebergs[24].show();
-                icebergs[25] = new iceberg(320, 440, 40, 40, '#000000')
-                icebergs[25].show();
+                vanish.splice(0,3);
             }
         }
         let refreshInternal2 = setInterval(function () {
@@ -296,7 +308,7 @@ function collisionDetection(i) {
     // Collision on Left
     if(squareX === icebergs[i].xPos + icebergs[i].width && squareY === icebergs[i].yPos){
         return collisionLeft = true;
-       } 
+       }
 
     //Collision on Bottom?
     if(squareY + squareHeight === icebergs[i].yPos && squareX === icebergs[i].xPos){
@@ -305,6 +317,29 @@ function collisionDetection(i) {
 
     //Collision on the Top?
     if(squareY === icebergs[i].yPos + icebergs[i].height && squareX === icebergs[i].xPos) {
+        return collisionTop = true;
+    }
+}
+
+function collisionDetectionVanish(i) {
+
+    //Collision on Right Vanish
+    if(squareX + squareWidth  === vanish[i].xPos && squareY + squareHeight === vanish[i].yPos + vanish[i].height){
+        return collisionRight = true;
+    }
+
+    // Collision on Left Vanish
+    if(squareX === vanish[i].xPos + vanish[i].width && squareY === vanish[i].yPos){
+        return collisionLeft = true;
+    }
+
+    //Collision on Bottom Vanish
+    if(squareY + squareHeight === vanish[i].yPos && squareX === vanish[i].xPos){
+        return collisionBottom = true;
+    }
+
+    //Collision on the Top Vanish
+    if(squareY === vanish[i].yPos + vanish[i].height && squareX === vanish[i].xPos) {
         return collisionTop = true;
     }
 }
@@ -333,9 +368,6 @@ function drawEverything(){
     }
     if(squareX === button1.xPos && squareY === button1.yPos && buttonAct1 === false){
         button1.activate1();
-    }
-    if (squareX === button2.xPos && squareY === button2.yPos && buttonAct2 === false){
-        button2.activate2();
     }
 }
 
@@ -367,6 +399,10 @@ function moveEverything() {
     }
     for(let i = 0; i < icebergs.length; i++){
         collisionDetection(i);
+    }
+
+    for(let i = 0; i < vanish.length; i++){
+        collisionDetectionVanish(i);
     }
 }
     function colorRect(leftX, topY, width, height, drawColor) {
