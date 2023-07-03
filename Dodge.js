@@ -46,10 +46,6 @@ let arrayRandomChoice;
 let arrayRandomCircle = [10, 30, 50, 70, 90, 110, 130, 150, 170, 190, 210, 230, 250, 270, 290, 310, 330, 350, 370, 390, 410,
     430, 450, 470, 490, 510, 530, 550, 570, 590, 610, 630, 650, 670, 690, 710, 730, 750, 770, 790];
 
-let char1 = [];
-let char1x = [200,220,240,260,280,300,320,340,360,380,400,420,];
-let char1y = [140,160,180,200,220,240,260,280,300,320,340,360];
-
 let squares = [];
 let circles = [];
 let circles2 = [];
@@ -319,17 +315,6 @@ function firstBossDesign(){
     }
 }
 
-//Character Creation
-function char1Creation(){
-    let z = 0;
-    for(let i = 0; i < 12; i++){
-        for(let j = 0; j < 12; j++) {
-            char1[z] = new square(char1x[j], char1y[i], 20, 20, char1Color[z])
-            z += 1;
-        }
-    }
-}
-
 // level 1
 function level1() {
     setInterval(function(){
@@ -429,7 +414,7 @@ function FirstBoss() {
 
 function FirstBossPart2() {
     squareColor = '#8B0000';
-    collision = false; // change for testing
+    collision = true; // change for testing
     firstBossAudio.play();
     document.querySelector("#myVideo").setAttribute("src","movingPurpleBackground.mp4");
     squares.splice(0,squares.length);
@@ -468,7 +453,7 @@ window.onload = function() {
                 squareResetLevel1 = true;
                 level1(numSquares);
                 break;
-            case 15:
+            case 10:
                 level1Part2(numSquares);
                 break;
             case 20:
@@ -561,9 +546,6 @@ function moveEverything() {
         }
     }
 
-    for(let i = 0; i < char1.length; i++){
-        char1[i].show();
-    }
     for(let i = 0; i < squares.length; i++){
         squares[i].move();
         squares[i].show();
