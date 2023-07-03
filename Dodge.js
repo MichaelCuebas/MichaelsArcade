@@ -23,7 +23,7 @@ let squareColor = '#8800C7';
 let squareX = 380;
 let squareY = 200;
 let rapidFire;
-let collision = false; //Change based on Testing, True for Gameplay
+let collision = true; //Change based on Testing, True for Gameplay
 let showingEndScreen = false;
 let showingStartScreen = true;
 let startAudio = document.querySelector('#audio')
@@ -45,6 +45,10 @@ let arrayRandomChoice;
 
 let arrayRandomCircle = [10, 30, 50, 70, 90, 110, 130, 150, 170, 190, 210, 230, 250, 270, 290, 310, 330, 350, 370, 390, 410,
     430, 450, 470, 490, 510, 530, 550, 570, 590, 610, 630, 650, 670, 690, 710, 730, 750, 770, 790];
+
+let char1 = [];
+let char1x = [200,220,240,260,280,300,320,340,360,380,400,420,];
+let char1y = [140,160,180,200,220,240,260,280,300,320,340,360];
 
 let squares = [];
 let circles = [];
@@ -71,7 +75,7 @@ function squareResetFunc(a,z,wide,tall,color){
     for (a; a < z; a++) {
         if (squares[a].yPos > 580) {
             if(a < z)
-                squares[a] = new square(arrayRandomChoice, squareThickness + wide, squareHeight + tall, color);
+                squares[a] = new square(arrayRandomChoice,-200, squareThickness + wide, squareHeight + tall, color);
         }
     }
 }
@@ -105,9 +109,9 @@ function squareReset() {
     }
     if(bossPhase1 === true){
         arrayRandomChoice = arrayRandomRightX;
-        squareResetFunc(0, 20, 0,0,'#8B0000');
+        squareResetFunc(0, 50, 0,0,'#8B0000');
         arrayRandomChoice = arrayRandomLeftX;
-        squareResetFunc(20, 40, 0,0,'#8800C7');
+        squareResetFunc(50, 100, 0,0,'#8800C7');
         circleResetFunc1();
     }
 }
@@ -191,7 +195,7 @@ function handleMouseClickStart (){
 }
 
 class square {
-    constructor(xPos, width, height, color) {
+    constructor(xPos,yPos, width, height, color) {
         if(arrayRandomChoice === arrayRandomFull) {
             this.xPos = arrayRandom[Math.floor(Math.random() * arrayRandom.length)];
         }
@@ -201,7 +205,10 @@ class square {
         else if (arrayRandomChoice === arrayRandomLeftX){
             this.xPos = arrayRandomLeft[Math.floor(Math.random() * arrayRandomLeft.length)];
         }
-        this.yPos = -200;
+        else{
+            this.xPos = xPos;
+        }
+        this.yPos = yPos;
         this.width = width;
         this.height = height;
         this.color = color;
@@ -295,19 +302,30 @@ function firstBossDesign(){
 
         circles[0] = new circle(10, '#8B0000')
         circles2[0] = new circle(790, '#8800C7')
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 50; i++) {
             arrayRandomChoice = arrayRandomRightX;
-            squares[i] = new square(arrayRandomChoice, squareThickness, squareHeight, '#8B0000');
+            squares[i] = new square(arrayRandomChoice,-200, squareThickness, squareHeight, '#8B0000');
         }
-        for (let i = 20; i < 40; i++) {
+        for (let i = 50; i < 100; i++) {
             arrayRandomChoice = arrayRandomLeftX;
-            squares[i] = new square(arrayRandomChoice, squareThickness, squareHeight, '#8800C7');
+            squares[i] = new square(arrayRandomChoice, -200,squareThickness, squareHeight, '#8800C7');
         }
     }
-    if(bossPatternTwo === true){
+    if(bossPatternTwo === true){ //THIS ISN'T RUNNING
         for (let i = 0; i < 60; i++) {
             arrayRandomChoice = arrayRandom;
-            squares[i] = new square(arrayRandomChoice, squareThickness, squareHeight, 'yellow');
+            squares[i] = new square(arrayRandomChoice, -200, squareThickness, squareHeight, 'yellow');
+        }
+    }
+}
+
+//Character Creation
+function char1Creation(){
+    let z = 0;
+    for(let i = 0; i < 12; i++){
+        for(let j = 0; j < 12; j++) {
+            char1[z] = new square(char1x[j], char1y[i], 20, 20, char1Color[z])
+            z += 1;
         }
     }
 }
@@ -320,76 +338,76 @@ function level1() {
         circleResetFunc2()
     }, 500)
     for (let i = 0; i < 20; i++) {
-        squares[i] = new square(arrayRandomFull, squareThickness, squareHeight, '#39E75F');
+        squares[i] = new square(arrayRandomFull, -200, squareThickness, squareHeight, '#39E75F');
         squareColor = '#39E75F';
     }
 }
 function level1Part2(){
     for (let i = 20; i < 30; i++) {
-        squares[i] = new square(arrayRandomFull, squareThickness, squareHeight, '#39E75F');
+        squares[i] = new square(arrayRandomFull, -200, squareThickness, squareHeight, '#39E75F');
         squareColor = '#39E75F';
     }
 }
 function level2(){
     for (let i = 30; i < 40; i++) {
-        squares[i] = new square(arrayRandomFull, squareThickness, squareHeight, '#4fc3f7');
+        squares[i] = new square(arrayRandomFull, -200, squareThickness, squareHeight, '#4fc3f7');
         squareColor = '#4fc3f7';
     }
 }
 function level2Part2(){
     for (let i = 40; i < 45; i++) {
-        squares[i] = new square(arrayRandomFull,squareThickness + 20, squareHeight, '#4fc3f7');
+        squares[i] = new square(arrayRandomFull,-200, squareThickness + 20, squareHeight, '#4fc3f7');
     }
 }
 
 //level 3
 function level3(){
     for (let i = 45; i < 50; i++) {
-        squares[i] = new square(arrayRandomFull, squareThickness, squareHeight, '#B99976');
+        squares[i] = new square(arrayRandomFull,-200, squareThickness, squareHeight, '#B99976');
         squareColor = '#B99976';
     }
 }
 function level3Part2(){
     for (let i = 50; i < 55; i++) {
-        squares[i] = new square(arrayRandomFull, squareThickness, squareHeight, '#B99976');
+        squares[i] = new square(arrayRandomFull,-200, squareThickness, squareHeight, '#B99976');
     }
 }
 
 // level 4
 function level4(){
     for (let i = 55; i < 60; i++) {
-        squares[i] = new square(arrayRandomFull, squareThickness, squareHeight + 20, '#FFFFFF');
+        squares[i] = new square(arrayRandomFull, -200, squareThickness, squareHeight + 20, '#FFFFFF');
         squareColor = '#FFFFFF';
     }
 }
 function level4Part2(){
     for (let i = 60; i < 65; i++) {
-        squares[i] = new square(arrayRandomFull, squareThickness, squareHeight, '#FFFFFF');
+        squares[i] = new square(arrayRandomFull, -200, squareThickness, squareHeight, '#FFFFFF');
     }
 }
 // level 5
 function level5(){
     for (let i = 65; i < 70; i++) {
-        squares[i] = new square(arrayRandomFull,squareThickness + 20, squareHeight, '#FF6863');
+        squares[i] = new square(arrayRandomFull,-200,squareThickness + 20, squareHeight, '#FF6863');
         squareColor = '#FF6863';
     }
 }
 function level5Part2(){
     for (let i = 70; i < 75; i++) {
-        squares[i] = new square(arrayRandomFull, squareThickness, squareHeight, '#FF6863');
+        squares[i] = new square(arrayRandomFull, -200, squareThickness, squareHeight, '#FF6863');
     }
 }
 
 // level 6
 function level6(){
     for (let i = 75; i < 80; i++) {
-        squares[i] = new square(arrayRandomFull,squareThickness + 20, squareHeight, '#FFE800');
+        squares[i] = new square(arrayRandomFull,-200,squareThickness + 20, squareHeight, '#FFE800');
         squareColor = '#FFE800';
     }
 }
 function level6Part2(){
     for (let i = 80; i < 90; i++) {
-        squares[i] = new square(arrayRandomFull, squareThickness, squareHeight, '#FFE800');
+        squares[i] = new square(arrayRandomFull,-200, squareThickness, squareHeight, '#FFE800');
     }
 }
 function FirstBoss() {
@@ -404,14 +422,14 @@ function FirstBoss() {
     document.querySelector("#myVideo").setAttribute("src", 'black');
     document.body.style.backgroundColor = 'black';
     for (let i = 0; i < 50; i++) {
-        squares[i] = new square(arrayRandomFull, squareThickness, squareHeight - 400, '#8B0000');
+        squares[i] = new square(arrayRandomFull, -200, squareThickness, squareHeight - 400, '#8B0000');
     }
 }
 
 
 function FirstBossPart2() {
     squareColor = '#8B0000';
-    collision = true;
+    collision = false; // change for testing
     firstBossAudio.play();
     document.querySelector("#myVideo").setAttribute("src","movingPurpleBackground.mp4");
     squares.splice(0,squares.length);
@@ -438,60 +456,63 @@ window.onload = function() {
 
         switch (seconds) {
             case 0:
-                arrayRandomChoice = arrayRandomFull;
+                arrayRandomChoice = -1;
                 canvasColor = 'black';
                 scoreColor = '#39E75F';
+                squareColor = '#39E75F';
                 startAudio.pause();
                 deathMusic.pause();
                 level1Audio.play()
                 squareResetLevel1 = true;
+                arrayRandomChoice = arrayRandomFull;
+                squareResetLevel1 = true;
                 level1(numSquares);
                 break;
-            case 10:
+            case 15:
                 level1Part2(numSquares);
                 break;
-            case 15:
+            case 20:
                 level2(numSquares);
                 break;
-            case 20:
+            case 25:
                 level2Part2();
                 break;
-            case 25:
+            case 30:
                 level3();
                 break;
-            case 30:
+            case 35:
                 level3Part2();
                 break;
-            case 35:
+            case 40:
                 level4();
                 break;
-            case 40:
+            case 45:
                 level4Part2();
                 break;
-            case 45:
+            case 50:
                 level5();
                 break;
-            case 50:
+            case 55:
                 level5Part2();
                 break;
-            case 55:
+            case 60:
                 level6();
                 break;
-            case 60:
+            case 65:
                 level6Part2();
                 break;
-            case 65:
+            case 73:
                 firstBoss = true;
                 squareResetLevel1 = false;
                 FirstBoss();
                 break;
-            case 73: // 73
+            case 90: // 73
                 arrayRandomFull = false
                 firstBossPart2 = true;
                 bossPatternOne = true;
                 FirstBossPart2();
                 break;
-            case 83: // 83
+            case 103: // 90
                 circles3[0] = new circle(100, '#8B0000')
                 circles4[0] = new circle(700, '#8800C7')
                 bossPhase1 = false;
@@ -540,6 +561,9 @@ function moveEverything() {
         }
     }
 
+    for(let i = 0; i < char1.length; i++){
+        char1[i].show();
+    }
     for(let i = 0; i < squares.length; i++){
         squares[i].move();
         squares[i].show();
